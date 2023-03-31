@@ -11,9 +11,10 @@ RUN apt-get update \
 
 # Habilita o mod_rewrite do Apache
 RUN a2enmod rewrite
+COPY .docker/vhost.conf /etc/apache2/sites-available/000-default.conf
 
 # Copia o arquivo php.ini para o container
-COPY php.ini /usr/local/etc/php/
+COPY .docker/php.ini /usr/local/etc/php/
 
 # Define o diretório de trabalho como /var/www/html
 WORKDIR /var/www/html
