@@ -1,6 +1,0 @@
-# ignore .git and .docker folders
-.docker
-.git
-
-Dockerfile
-docker-compose.yml

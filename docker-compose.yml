@@ -9,8 +9,9 @@ services:
       - 8000:80
     volumes:
       - .:/var/www/html
-      - ./.docker/000-default.conf:/etc/apache2/sites-available/000-default.conf
-      - ./.docker/php.ini:/usr/local/etc/php/php.ini
+      - docker:/var/www/html/docker
+      - ./docker/000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./docker/php.ini:/usr/local/etc/php/php.ini
     env_file:
       - .env.local
     depends_on:
@@ -25,7 +26,7 @@ services:
     env_file:
       - .env.local
     volumes:
-      - ./.docker/data:/var/lib/mysql
+      - ./docker/data:/var/lib/mysql
     restart: always
 
   phpmyadmin:
