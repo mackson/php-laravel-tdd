@@ -9,12 +9,14 @@ RUN apt-get update \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug
 
+## Instalar a extensão do MYSQL para PHP
+RUN docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable pdo_mysql
+
+# Instalar o nano
+RUN apt-get install nano -y
+
 # Habilita o mod_rewrite do Apache
 RUN a2enmod rewrite
-COPY .docker/vhost.conf /etc/apache2/sites-available/000-default.conf
-
-# Copia o arquivo php.ini para o container
-COPY .docker/php.ini /usr/local/etc/php/
 
 # Define o diretório de trabalho como /var/www/html
 WORKDIR /var/www/html
@@ -22,13 +24,12 @@ WORKDIR /var/www/html
 # Instala o Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Instala o Laravel
+# Instala o Composer
 RUN composer global require laravel/installer \
-    && export PATH="$PATH:$HOME/.composer/vendor/bin" \
-    && composer create-project --prefer-dist laravel/laravel .
+    && export PATH="$PATH:$HOME/.composer/vendor/bin"
 
 # Expõe a porta 80 do container
 EXPOSE 80
 
-# Inicia o Apache
+# Inicia o Apache em modo foreground
 CMD ["apache2-foreground"]

@@ -4,39 +4,38 @@ services:
   app:
     build:
       context: .
+    container_name: evoluir-backend
     ports:
       - 8000:80
     volumes:
       - .:/var/www/html
       - ./.docker/000-default.conf:/etc/apache2/sites-available/000-default.conf
       - ./.docker/php.ini:/usr/local/etc/php/php.ini
-    environment:
-      - DB_HOST=db
-      - DB_DATABASE=laravel
-      - DB_USERNAME=laravel
-      - DB_PASSWORD=secret
+    env_file:
+      - .env.local
     depends_on:
       - db
+    restart: always
 
   db:
     image: mysql:8
+    container_name: evoluir-mysql
     ports:
       - 3306:3306
-    environment:
-      - MYSQL_DATABASE=laravel
-      - MYSQL_USER=laravel
-      - MYSQL_PASSWORD=secret
-      - MYSQL_ROOT_PASSWORD=root
+    env_file:
+      - .env.local
     volumes:
       - ./.docker/data:/var/lib/mysql
+    restart: always
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
+    container_name: evoluir-phpmyadmin
     ports:
       - 8080:80
-    environment:
-      - PMA_HOST=db
-      - MYSQL_ROOT_PASSWORD=root
+    env_file:
+      - .env.local
+    restart: always
 
 volumes:
   db_data:
