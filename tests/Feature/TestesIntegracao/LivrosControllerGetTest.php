@@ -12,7 +12,7 @@ class LivrosControllerGetTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * Um exemplo de básico de Asserção (Afirmação, Retorno) de Busca de Livros
+     * Um exemplo básico de Asserção (Afirmação, Retorno) de Busca de Livros
      */
     public function test_livros_get(): void
     {
@@ -28,7 +28,7 @@ class LivrosControllerGetTest extends TestCase
         // Implementa as Asserções
         $response->assertStatus(200);
         $response->assertJsonCount(5);
-        
+
     }
 
 }

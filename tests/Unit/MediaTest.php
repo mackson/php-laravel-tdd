@@ -6,9 +6,8 @@ use PHPUnit\Framework\TestCase;
 
 class MediaTest extends TestCase
 {
-
     /**
-     * Um simples teste Unitário
+     * Um simples teste Unitário para cáclculo da media de notas
      */
     public function test_media(): void
     {

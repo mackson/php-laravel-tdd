@@ -14,7 +14,7 @@ class LivrosControllerCreateTest extends TestCase
     use WithFaker;
 
      /**
-     * Um exemplo de básico de Asserção (Afirmação, Retorno) de Criação de Livros
+     * Um exemplo básico de Asserção (Afirmação, Retorno) de Criação de Livros
      */
 
     public function testCreateLivro()

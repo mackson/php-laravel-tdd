@@ -28,7 +28,7 @@ git clone git@github.com:mackson/php-laravel-tdd.git
 
 ```
 
-<b>Atenção:</b>> Você precisará ter instalado em seu sistema operacional o Docker e o docker-composer para iniciar o projeto.
+<b>Atenção:</b> Você precisará ter instalado em seu sistema operacional o Docker e o docker-composer para iniciar o projeto.
 
 
 ### 2 - Criando um novo projeto Laravel 10 / Php8.1 com Sail
